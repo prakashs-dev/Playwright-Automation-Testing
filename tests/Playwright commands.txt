@@ -1,0 +1,27 @@
+1. Run the test with head mode
+    npx playwright test --headed
+
+2. Change the different browser
+    npx playwright test --project=chromium
+
+    npx playwright test --project chromium
+
+3. Run specfic file
+    npx playwright test fileName.spec.js
+
+4. Run specfic file and specfic method 
+    npx playwright test fileName.spec.js -g "Method Name"
+
+5. Open the test report
+    npx playwright show-report
+
+6. Code generater
+    npx playwright codegen
+
+    npx playwright codegen --help
+
+7. Mobile simulator
+    npx playwright codegen --device --help
+
+8. Open debug mode
+    npx playwright test fileName.spec.js --debug
