@@ -1,6 +1,6 @@
 import { test, expect, webkit } from "@playwright/test";
 
-test("Sample test", async ({ page }) => {
+test.skip("Sample test", async ({ page }) => {
   await page.setViewportSize({ width: 1536, height: 816 });
   await page.goto("https://automationexercise.com/products");
 
@@ -23,4 +23,8 @@ test("Sample test", async ({ page }) => {
   }
 
   await page.waitForTimeout(3000);
+});
+
+test("Sample Test 2", async ({ page }) => {
+  await page.goto("https://letcode.in/calendar");
 });

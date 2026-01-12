@@ -11,5 +11,8 @@
     "@playwright/test": "^1.57.0",
     "@types/node": "^25.0.1",
     "allure-playwright": "^3.4.3"
+  },
+  "dependencies": {
+    "csv-parse": "^6.1.0"
   }
 }
