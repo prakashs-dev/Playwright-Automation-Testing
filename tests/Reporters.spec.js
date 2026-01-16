@@ -16,7 +16,7 @@ import { test, expect } from "@playwright/test";
         npx playwright test reporters.spec.js
 
     5.Generate Allure report
-        allure generate allure_result(fileName) -o allure-report --clean
+        allure generate allure-results --clean
 
     6.Open all allure report
         allure open allure_result(filename)
