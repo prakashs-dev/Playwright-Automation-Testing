@@ -10,16 +10,16 @@ import { test, expect } from "@playwright/test";
         npm install -g allure-commandline --save-dev
     
     3.Add report in playwright.config.js 
-        reporter : ['allure-playwright',{allure_report: 'allure_result'}];
+        reporter : [['allure-playwright']];
         
     4.Run the test
         npx playwright test reporters.spec.js
 
     5.Generate Allure report
-        allure generate allure-results --clean
+        npx allure-commandline generate allure-results --clean -o allure-report
 
     6.Open all allure report
-        allure open allure_result(filename)
+       npx allure-commandline open allure-report
 */
 
 test("Test 1", async ({ page }) => {

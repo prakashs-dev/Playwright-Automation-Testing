@@ -3,6 +3,7 @@ import dotenv from "dotenv";
 import path from "path";
 
 dotenv.config({ path: path.resolve(__dirname, "../test_data/.env") });
+let screenshotCounter = 1;
 
 test("Debit Card Application Form", async () => {
   const browser = await chromium.launch();
@@ -77,6 +78,7 @@ async function scrolling(page, location) {
 
 async function screenshot(page, title) {
   await page.screenshot({
-    path: "tests/screenshots/" + Date.now() + `${title}.png`,
+    path: "tests/screenshots/" + `${title}${screenshotCounter}.png`,
   });
+  screenshotCounter++;
 }

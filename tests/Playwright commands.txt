@@ -25,3 +25,21 @@
 
 8. Open debug mode
     npx playwright test fileName.spec.js --debug
+
+
+Dummy website
+-------------
+https://ecommerce-playground.lambdatest.io/
+https://www.demoblaze.com/index.html
+https://opensource-demo.orangehrmlive.com/web/index.php/auth/login
+https://demo.nopcommerce.com/register
+http://www.automationpractice.pl/index.php
+https://automationexercise.com/
+https://demowebshop.tricentis.com/
+https://playwrightautomationtesting.blogspot.com/
+https://testautomationpractice.blogspot.com/
+https://www.saucedemo.com/
+
+For API
+-------
+https://fakestoreapi.com/products
