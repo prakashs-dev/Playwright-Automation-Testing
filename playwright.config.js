@@ -5,15 +5,18 @@ import { defineConfig, devices } from "@playwright/test";
  * Read environment variables from file.
  * https://github.com/motdotla/dotenv
  */
-import dotenv from 'dotenv';
-import path from 'path';
-dotenv.config({ path: path.resolve(__dirname, '.envEcom') });
+
+import dotenv from "dotenv";
+import path from "path";
+// dotenv.config({ path: path.resolve(__dirname, ".envEcom") });
 
 /**
  * @see https://playwright.dev/docs/test-configuration
  */
 export default defineConfig({
+  // I have various folders to practice like ecommerce, cucumber, tests etcc...
   testDir: "./tests",
+
   /* Run tests in files in parallel */
   fullyParallel: true,
   /* Fail the build on CI if you accidentally left test.only in the source code. */
@@ -21,10 +24,11 @@ export default defineConfig({
   /* Retry on CI only */
   retries: process.env.CI ? 2 : 0,
   /* Opt out of parallel tests on CI. */
-  workers: process.env.CI ? 1 : undefined,
+  // workers: process.env.CI ? 1 : undefined,
+  // workers: 3,
   /* Reporter to use. See https://playwright.dev/docs/test-reporters */
   // reporter: "html",
-  reporter: [["html"], ["allure-playwright"]],
+  reporter: [["html"]],
   // reporter: [['json', { outputFile: 'results.json' }]],
   // reporter: [['junit', { outputFile: 'results.xml' }]],
   // reporter: [
@@ -52,7 +56,10 @@ export default defineConfig({
   projects: [
     {
       name: "chromium",
-      use: { ...devices["Desktop Chrome"] },
+      use: {
+        ...devices["Desktop Chrome"],
+        // viewport: { width: 1536, height: 860 },
+      },
     },
 
     /**{

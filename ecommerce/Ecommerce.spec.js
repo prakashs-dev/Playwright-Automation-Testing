@@ -1,7 +1,7 @@
 import { test, expect, chromium } from "@playwright/test";
-import { Login } from "../Ecom/Login";
-import { Product } from "../Ecom/Product";
-import { Checkout } from "../Ecom/Checkout";
+import Login from "./pages/Login";
+import Product from "./pages/Product";
+import Checkout from "./pages/Checkout";
 import dotenv from "dotenv";
 import path from "path";
 
@@ -10,7 +10,6 @@ dotenv.config({ path: path.resolve(__dirname, "../test_data/.env") });
 let browser;
 let context;
 let page;
-let screenshotCounter = 0;
 
 let billAddress = {
   firstname: process.env.firstName,
@@ -30,9 +29,9 @@ test.beforeAll(async () => {
   await page.goto(process.env.ecomUrl);
 });
 
-test.afterAll(async () => {
-  await browser.close();
-});
+// test.afterAll(async () => {
+//   await browser.close();
+// });
 
 test("E-Commerce Website Testing", async () => {
   // Go to Login Page
@@ -75,7 +74,6 @@ test("E-Commerce Website Testing", async () => {
 
 async function screenshots(title) {
   await page.screenshot({
-    path: "tests/screenshots/" + `${title}${screenshotCounter}.png`,
+    path: "Ecom/screenshots/" + `${title}.png`,
   });
-  screenshotCounter++;
 }

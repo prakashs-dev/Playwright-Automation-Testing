@@ -1,5 +1,7 @@
 import { test, expect, webkit } from "@playwright/test";
 
+test.describe.configure({ mode: "serial" });
+
 test.skip("Sample test", async ({ page }) => {
   await page.setViewportSize({ width: 1536, height: 816 });
   await page.goto("https://automationexercise.com/products");
@@ -25,6 +27,20 @@ test.skip("Sample test", async ({ page }) => {
   await page.waitForTimeout(3000);
 });
 
-test("Sample Test 2", async ({ page }) => {
-  await page.goto("https://letcode.in/calendar");
+test.describe("Group 1", async () => {
+  test("Test 1", async () => {
+    console.log("Test 1 ......");
+  });
+  test("Test 2", async () => {
+    console.log("Test 2 ......");
+  });
+  test("Test 3", async () => {
+    console.log("Test 3 ......");
+  });
+  test("Test 4", async () => {
+    console.log("Test 4 ......");
+  });
+  test("Test 5", async () => {
+    console.log("Test 5.......");
+  });
 });

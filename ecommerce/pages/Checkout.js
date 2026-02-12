@@ -1,4 +1,4 @@
-exports.Checkout = class Checkout {
+class Checkout {
   constructor(page) {
     this.page = page;
     this.firsName = "#billing_first_name";
@@ -25,3 +25,5 @@ exports.Checkout = class Checkout {
     await this.page.locator(this.cod).check();
   }
 };
+
+module.exports = Checkout;

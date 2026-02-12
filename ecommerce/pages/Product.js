@@ -1,12 +1,10 @@
-exports.Product = class Product {
+class Product {
   constructor(page) {
     this.page = page;
     this.noOfProduct = "//a[@class='woocommerce-LoopProduct-link']/h3";
     this.addToButton =
       "//a[@class='woocommerce-LoopProduct-link']/following-sibling::a";
   }
-
-  
 
   async checkProductInCart(productName) {
     const products = this.page.locator(this.noOfProduct);
@@ -22,4 +20,6 @@ exports.Product = class Product {
       }
     }
   }
-};
+}
+
+module.exports = Product;

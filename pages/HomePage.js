@@ -3,7 +3,6 @@ exports.HomePage = class HomePage {
     this.page = page;
     this.productList = "//*[@id='tbodyid']/div[3]/div/div/h4/a";
     this.addToCartBtn = "//a[normalize-space()='Add to cart']";
-    this.carturl = "#cartur";
   }
 
   async addProductCard(productName) {
@@ -23,9 +22,5 @@ exports.HomePage = class HomePage {
     });
 
     await this.page.locator(this.addToCartBtn).click();
-  }
-
-  async gotoCart() {
-    await this.page.locator(this.carturl).click();
   }
 };

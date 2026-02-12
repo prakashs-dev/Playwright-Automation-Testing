@@ -1,4 +1,4 @@
-exports.Login = class Login {
+class Login {
   constructor(page) {
     this.page = page;
     this.username = "#username";
@@ -15,4 +15,6 @@ exports.Login = class Login {
     await this.page.getByText("My Account").click();
     await this.page.getByText("Sign out").click();
   }
-};
+}
+
+module.exports = Login;
