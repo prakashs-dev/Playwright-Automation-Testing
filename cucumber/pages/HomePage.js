@@ -4,10 +4,15 @@ export default class HomePage {
     this.username = "#username";
     this.password = "#password";
     this.loginBtn = "#login";
+    this.errorMsg = "//b[contains(text(),'Invalid Login details')]";
   }
 
   async LaunchURL() {
     await this.page.goto("https://adactinhotelapp.com/");
+  }
+
+  async GetErrorMessage() {
+    return await this.page.locator(this.errorMsg).isVisible();
   }
 
   async LoginUser(username, password) {

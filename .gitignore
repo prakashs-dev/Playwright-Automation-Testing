@@ -9,4 +9,7 @@ node_modules/
 /allure-results
 /allure-report
 gitignore
+results.json
+results.xml
+
 

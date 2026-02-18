@@ -3,7 +3,10 @@
   "version": "1.0.0",
   "description": "",
   "main": "index.js",
-  "scripts": {},
+  "scripts": {
+    "test": "cucumber-js test",
+    "posttest": "node cucumber/reports/report.js"
+  },
   "keywords": [],
   "author": "",
   "license": "ISC",
@@ -11,7 +14,9 @@
     "@cucumber/cucumber": "^12.6.0",
     "@playwright/test": "^1.57.0",
     "@types/node": "^25.0.1",
-    "allure-playwright": "^3.4.5"
+    "allure-cucumberjs": "^3.4.5",
+    "allure-playwright": "^3.4.5",
+    "multiple-cucumber-html-reporter": "^3.10.0"
   },
   "dependencies": {
     "csv-parse": "^6.1.0",

@@ -15,8 +15,20 @@ When(
   }
 );
 
+When(
+  "user enter {string} and {string} and click login button",
+  async function (username, password) {
+    await home.LoginUser(username, password);
+  }
+);
+
 Then("user should navigates to the search hotel page", async function () {
   await expect(this.page).toHaveURL(
     "https://adactinhotelapp.com/SearchHotel.php"
   );
+});
+
+Then("user should get an error message", async function () {
+  const msg = await home.GetErrorMessage();
+  expect(msg).toBeTruthy();
 });

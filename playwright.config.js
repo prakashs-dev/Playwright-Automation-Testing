@@ -28,7 +28,7 @@ export default defineConfig({
   // workers: 3,
   /* Reporter to use. See https://playwright.dev/docs/test-reporters */
   // reporter: "html",
-  reporter: [["html"]],
+  reporter: [["html"]["allure-playwright"]],
   // reporter: [['json', { outputFile: 'results.json' }]],
   // reporter: [['junit', { outputFile: 'results.xml' }]],
   // reporter: [
