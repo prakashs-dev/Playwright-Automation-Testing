@@ -14,8 +14,8 @@ import path from "path";
  * @see https://playwright.dev/docs/test-configuration
  */
 export default defineConfig({
-  // I have various folders to practice like ecommerce, cucumber, tests etcc...
-  testDir: "./tests",
+  // I have various folders to practice like ecommerce, cucumber, tests, interview etcc...
+  testDir: "./interview",
 
   /* Run tests in files in parallel */
   fullyParallel: true,
@@ -24,11 +24,11 @@ export default defineConfig({
   /* Retry on CI only */
   retries: process.env.CI ? 2 : 0,
   /* Opt out of parallel tests on CI. */
-  // workers: process.env.CI ? 1 : undefined,
+  workers: process.env.CI ? 1 : undefined,
   // workers: 3,
   /* Reporter to use. See https://playwright.dev/docs/test-reporters */
   // reporter: "html",
-  reporter: [["html"]["allure-playwright"]],
+  reporter: [["html"],["allure-playwright"]],
   // reporter: [['json', { outputFile: 'results.json' }]],
   // reporter: [['junit', { outputFile: 'results.xml' }]],
   // reporter: [

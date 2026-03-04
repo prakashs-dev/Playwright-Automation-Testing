@@ -16,7 +16,8 @@
     "@types/node": "^25.0.1",
     "allure-cucumberjs": "^3.4.5",
     "allure-playwright": "^3.4.5",
-    "multiple-cucumber-html-reporter": "^3.10.0"
+    "multiple-cucumber-html-reporter": "^3.10.0",
+    "open": "^11.0.0"
   },
   "dependencies": {
     "csv-parse": "^6.1.0",
