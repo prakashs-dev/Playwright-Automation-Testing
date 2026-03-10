@@ -28,6 +28,5 @@ test("Validate Dynamic table with pagingnation", async ({ page }) => {
       }
     }
   }
-
   await page.waitForTimeout(5000);
 });
