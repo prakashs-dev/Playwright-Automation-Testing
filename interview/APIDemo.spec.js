@@ -1,6 +1,6 @@
 import { test, expect } from "@playwright/test";
 
-// test("Get all <a> tags form amazon", async ({ request }) => {
+// test("API GET Method", async ({ request }) => {
 //   const reponse = await request.get("https://fakestoreapi.com/users");
 //   expect(reponse.status()).toBe(200);
 //   const users = await reponse.json();
@@ -33,4 +33,55 @@ import { test, expect } from "@playwright/test";
 //   console.log(transformed);
 // });
 
+test.skip("sample", async ({ page, request }) => {
+  const response = await request.post("https://fakestoreapi.com/users", {
+    data: {
+      username: "prakash",
+      email: "john@example.com",
+      password: "pass123",
+    },
+  });
+  const users = await response.json();
+  expect(response.status()).toBe(201);
+  // console.log(response.statusText());
+  console.log(response.headers().server);
+  console.log(response.headers().date);
 
+  // const auth = await request.post("https://fakestoreapi.com/auth/login", {
+  //   data: {
+  //     username: "john_doe",
+  //     password: "pass123",
+  //   },
+  // });
+
+  // expect(auth.status()).toBe(401);
+  // const body = await auth.text(); // here text is response not a json, its a text
+  // console.log(body);
+});
+
+// test("mocks a fruit and doesn't call api", async ({ page }) => {
+//   // Mock the api call before navigating
+//   await page.route("*/**/api/v1/fruits", async (route) => {
+//     const json = [{ name: "Strawberry", id: 21 }];
+//     await route.fulfill({ json });
+//   });
+
+//   await page.goto("https://demo.playwright.dev/api-mocking");
+
+//   await expect(page.getByText("Strawberry")).toBeVisible();
+// });
+
+test("mock api response", async ({ page }) => {
+  await page.route("*/**/api/v1/fruits", async (route) => {
+    const response = await route.fetch();
+    const json = await response.json();
+    json.push({ name: "Loquat", id: 100 });
+    json.push({ name: "Strawberry", id: 500 });
+    await route.fulfill({ response, json });
+  });
+
+  await page.goto("https://demo.playwright.dev/api-mocking/");
+
+  await expect(page.getByText("Loquat", { exact: true })).toBeVisible();
+  await expect(page.getByText("Strawberry", { exact: true })).toBeVisible();
+});
