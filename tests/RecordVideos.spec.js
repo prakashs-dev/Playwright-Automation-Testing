@@ -1,6 +1,13 @@
-import { test, expect } from "@playwright/test";
+import { test, expect, chromium } from "@playwright/test";
 
-test("Recording Videos", async ({ page }) => {
+test("Recording Videos", async () => {
+  const browser = await chromium.launch();
+  const context = await browser.newContext({
+    recordVideo: {
+      dir: "./tests/videos",
+    },
+  });
+  const page = await context.newPage();
   await page.goto("https://www.demoblaze.com/");
 
   await page.click("id=login2");

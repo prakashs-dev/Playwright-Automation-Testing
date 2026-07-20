@@ -4,8 +4,10 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "test": "cucumber-js test",
-    "posttest": "node cucumber/reports/report.js"
+    "test:cucumber": "cucumber-js test",
+    "posttest": "node cucumber/reports/report.js",
+
+    "test:report" : "playwright show-report"
   },
   "keywords": [],
   "author": "",

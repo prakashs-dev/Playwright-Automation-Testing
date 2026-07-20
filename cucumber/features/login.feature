@@ -3,10 +3,12 @@ Feature: Adactin Hotel Website
   Background:
     Given the user launches the application
 
+  @only
   Scenario: Validate with valid user
     When user enter valid username and password and click login button
     Then user should navigates to the search hotel page
 
+  @prakash
   Scenario Outline: Validate with Invalid user
     When user enter "<username>" and "<password>" and click login button
     Then user should get an error message

@@ -1,17 +1,31 @@
-import { test, expect, chromium } from "@playwright/test";
+import { test, expect } from "@playwright/test";
+import { log } from "console";
 
-test("Auth", async () => {
-  const browser = await chromium.launch();
-  const context = await browser.newContext({
-    httpCredentials: {
-      username: "admin",
-      password: "admin",
-    },
-  });
-  const page = await context.newPage();
-  await page.goto("https://the-internet.herokuapp.com/basic_auth");
+test("Token based flow", async ({ request }) => {
+  const loginReq = await request.post(
+    "https://api.escuelajs.co/api/v1/auth/login",
+    {
+      data: {
+        email: "john@mail.com",
+        password: "changeme",
+      },
+    }
+  );
 
-  expect(page.locator("p").textContent()).toContain("Congratulations");
+  expect(loginReq.status()).toBe(201);
+  const loginBody = await loginReq.json();
+  const token = loginBody.access_token;
 
-  expect.objectContaining
+  const userReq = await request.get(
+    "https://api.escuelajs.co/api/v1/auth/profile",
+    {
+      headers: {
+        Authorization: `Bearer ${token}`,
+      },
+    }
+  );
+
+  expect(userReq.status()).toBe(200);
+  const userBody = await userReq.json();
+  console.log(userBody);
 });

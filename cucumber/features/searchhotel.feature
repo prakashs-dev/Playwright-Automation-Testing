@@ -1,5 +1,6 @@
 Feature: Searching Hotels
 
+  @123
   Scenario: Search hotel with valid details
     Given user is on the hotel booking page
     When user enter valid details for hotel search
