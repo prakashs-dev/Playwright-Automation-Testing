@@ -6,8 +6,8 @@
   "scripts": {
     "test:cucumber": "cucumber-js test",
     "posttest": "node cucumber/reports/report.js",
-
-    "test:report" : "playwright show-report"
+    "test": "npx playwright test ",
+    "test:report": "playwright show-report"
   },
   "keywords": [],
   "author": "",
@@ -23,6 +23,7 @@
   },
   "dependencies": {
     "csv-parse": "^6.1.0",
-    "dotenv": "^17.2.3"
+    "dotenv": "^17.2.3",
+    "mysql2": "^3.24.4"
   }
 }
