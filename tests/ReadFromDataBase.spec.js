@@ -7,24 +7,27 @@ test("DB TEST", async () => {
     port: 3306,
     user: "root",
     password: "prakash",
-    database: "newdb", // databbase name
+    database: "newdb",
   });
 
-  connection.connect((error) => {
-    if (error) {
-      console.log("Connection Error");
-      return;
-    }
-  }, console.log("MySQL connected successfully!"));
+  try {
+    console.log("MySQL connected successfully!");
 
-  const [rows] = await connection.query(
-    "SELECT * FROM employees ORDER BY employee_id ASC LIMIT 10",
-  );
+    const [rows] = await connection.query(
+      "SELECT * FROM EMPLOYEES ORDER BY employee_id ASC LIMIT 3",
+    );
 
-  console.log("Employee data:", rows);
+    console.log("Employee data:", rows);
 
-  // expect(rows).toHaveLength(rows.length);
-  // console.log("Totally 10 records", rows.length);
+    // Verify that 3 records are returned
+    expect(rows).toHaveLength(3);
 
-  await connection.end();
+    console.log("Total records returned:", rows.length);
+  } catch (error) {
+    console.error("Database Error:", error);
+    throw error;
+  } finally {
+    await connection.end();
+    console.log("MySQL connection closed.");
+  }
 });
